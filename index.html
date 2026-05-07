@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday Marcel😽</title>
-  <link rel="icon" href="./img/photo1.jpg" type="image/jpeg">
+  <meta property="og:image" content="https://heongggg.github.io/img/photo1.jpg">
+  <meta property="og:title" content="Happy Birthday Marcel">
+  <title>Happy Birthday Marcel 🐾</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
 :root {
@@ -502,7 +504,7 @@ html, body {
   font-size: 0.78rem;
   letter-spacing: 0.5px;
   pointer-events: none;
-  animation: hintFadeOut 0.5s ease 3.5s forwards;
+  animation: hintFadeOut 0.5s ease 6s forwards;
   z-index: 5;
 }
 .swipe-hint-arrow {
@@ -723,6 +725,21 @@ html, body {
 }
 .next-btn.hidden { display: none; }
 
+
+/* ===== BACK BUTTON ===== */
+.back-btn {
+  position: fixed; top: 16px; left: 16px; z-index: 100;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(232,180,192,0.3);
+  color: white; font-size: 1rem;
+  display: none; align-items: center; justify-content: center;
+  cursor: pointer; backdrop-filter: blur(10px);
+  transition: all 0.3s;
+}
+.back-btn.visible { display: flex; }
+.back-btn:hover { background: rgba(232,180,192,0.2); transform: scale(1.1); }
+
 /* ===== MUSIC CONTROL BUTTON ===== */
 #musicControl {
   position: fixed; top: 16px; right: 16px; z-index: 100;
@@ -791,6 +808,9 @@ html, body {
 <!-- MUSIC CONTROL -->
 <button id="musicControl" onclick="toggleMusic()" title="musik">🎵</button>
 
+<!-- BACK BUTTON -->
+<button id="backBtn" class="back-btn" onclick="goBack()" title="kembali">←</button>
+
 <!-- STAR CANVAS — di atas semua page -->
 <canvas id="starCanvas"></canvas>
 
@@ -806,9 +826,9 @@ html, body {
   <div class="popup-box">
     <div class="popup-cats">🐈‍⬛❤️🐱</div>
     <h2>Haii Marcel!</h2>
-    <p>mau pake musik ga, Cel?</p>
+    <p>Mau pake musik ga, Cel?</p>
     <div class="popup-btns">
-      <button onclick="startSite(true)" class="btn-yes">mauu bangett</button>
+      <button onclick="startSite(true)" class="btn-yes">mauu bangett 🎵</button>
       <button onclick="startSite(false)" class="btn-no">gah males</button>
     </div>
   </div>
@@ -826,7 +846,7 @@ html, body {
       <span class="cat-anim" style="animation-delay:0.3s">🎂</span>
       <span class="cat-anim" style="animation-delay:0.6s">🧡</span>
     </div>
-    <h1 class="greeting-title">Happy Birthday,<br><span class="name-highlight" id="nameHighlight">Marcel</span></h1>
+    <h1 class="greeting-title">Happy Birthday,<br><span class="name-highlight" id="nameHighlight">gemesss</span></h1>
     <p class="greeting-sub" id="greetingSub">Pramudhita Ananda Marcelino ❤️</p>
     <div class="date-anim-wrap">
       <div class="date-display">
@@ -1153,6 +1173,19 @@ function startSite(playMusic) {
 }
 
 
+
+// ===== BACK BUTTON =====
+function goBack() {
+  if (currentPage > 1) goToPage(currentPage - 1);
+}
+
+function updateBackBtn() {
+  const btn = document.getElementById('backBtn');
+  if (!btn) return;
+  if (currentPage > 1) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+}
+
 // ===== FLOATING PAWS =====
 function initPaws() {
   const pawBg = document.getElementById('pawBg');
@@ -1295,6 +1328,7 @@ function goToPage(num) {
     if (num === 2) initPage2();
     if (num === 3) initPage3();
     if (num === 4) initPage4();
+    updateBackBtn();
   }, 750);
 }
 
@@ -1360,6 +1394,10 @@ let touchStartX = 0, touchStartY = 0, isDragging = false;
 function initPage4() {
   carouselIndex = 0;
 
+  // Reset carousel opacity in case of re-entry
+  const wrapReset = document.getElementById('carouselWrap');
+  if (wrapReset) { wrapReset.style.transition = 'none'; wrapReset.style.opacity = '1'; }
+
   // Reset ending reveal state
   ['finalLine1','finalLine2','finalSub','finalFrom'].forEach(id => {
     const el = document.getElementById(id);
@@ -1410,7 +1448,7 @@ function initPage4() {
 }
 
 let autoSlideTimer = null;
-const AUTO_SLIDE_DELAY = 3000;
+const AUTO_SLIDE_DELAY = 5000;
 
 function startAutoSlide() {
   clearInterval(autoSlideTimer);
@@ -1436,13 +1474,7 @@ function startAutoSlide() {
 }
 
 function triggerDramaticEnding() {
-  // Dim the carousel slightly
-  const wrap = document.getElementById('carouselWrap');
-  if (wrap) {
-    wrap.style.transition = 'opacity 1.2s ease';
-    wrap.style.opacity = '0.35';
-  }
-  // Wait 800ms then scroll + reveal
+  // Keep carousel visible, just scroll down and reveal ending
   setTimeout(() => {
     revealEnding();
     launchConfetti();
