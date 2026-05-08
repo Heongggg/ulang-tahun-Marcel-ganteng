@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:image" content="https://heongggg.github.io/img/photo1.jpg">
-  <meta property="og:title" content="Happy Birthday Marcel❤️">
-  <title>Happy Birthday Marcel 😽</title>
+  <meta property="og:title" content="Happy Birthday Marcel">
+  <title>Happy Birthday Marcel 🐾</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -33,16 +33,15 @@ html, body {
   color: var(--text-dark);
 }
 
-/* ===== STAR CANVAS — fixed, highest z above pages ===== */
+/* bintang */
 #starCanvas {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 50;
-  mix-blend-mode: screen;
+  z-index: 2;
 }
 
-/* ===== MUSIC POPUP ===== */
+/* musik popup */
 .music-popup {
   position: fixed;
   inset: 0;
@@ -105,71 +104,49 @@ html, body {
 }
 .btn-no:hover { background: var(--soft-pink); }
 
-/* ===== PAGES ===== */
+/* pages */
 .page {
   position: fixed;
   inset: 0;
   overflow-y: auto;
   z-index: 1;
-  /* no default transition — JS handles per-direction */
 }
 .page.hidden {
   opacity: 0;
   pointer-events: none;
 }
 
-/* Cinematic transition states */
 .page.exit-left {
-  animation: pageExitLeft 0.72s cubic-bezier(0.77,0,0.18,1) forwards;
-}
-.page.exit-up {
-  animation: pageExitUp 0.72s cubic-bezier(0.77,0,0.18,1) forwards;
+  animation: pageExitLeft 0.65s cubic-bezier(0.77,0,0.18,1) forwards;
 }
 .page.enter-right {
-  animation: pageEnterRight 0.72s cubic-bezier(0.77,0,0.18,1) forwards;
+  animation: pageEnterRight 0.65s cubic-bezier(0.77,0,0.18,1) forwards;
+}
+.page.exit-up {
+  animation: pageExitUp 0.65s cubic-bezier(0.77,0,0.18,1) forwards;
 }
 .page.enter-down {
-  animation: pageEnterDown 0.72s cubic-bezier(0.77,0,0.18,1) forwards;
+  animation: pageEnterDown 0.65s cubic-bezier(0.77,0,0.18,1) forwards;
 }
 
 @keyframes pageExitLeft {
-  0%   { opacity:1; transform: translateX(0) scale(1); filter: blur(0px); }
-  40%  { opacity:0.6; filter: blur(3px); }
-  100% { opacity:0; transform: translateX(-18%) scale(0.94); filter: blur(8px); }
+  0%   { opacity:1; transform: translateX(0); }
+  100% { opacity:0; transform: translateX(-14%); }
 }
 @keyframes pageExitUp {
-  0%   { opacity:1; transform: translateY(0) scale(1); filter: blur(0px); }
-  40%  { opacity:0.6; filter: blur(3px); }
-  100% { opacity:0; transform: translateY(-12%) scale(0.96); filter: blur(8px); }
+  0%   { opacity:1; transform: translateY(0); }
+  100% { opacity:0; transform: translateY(-10%); }
 }
 @keyframes pageEnterRight {
-  0%   { opacity:0; transform: translateX(22%) scale(1.04); filter: blur(10px); }
-  50%  { opacity:0.8; filter: blur(2px); }
-  100% { opacity:1; transform: translateX(0) scale(1); filter: blur(0px); }
+  0%   { opacity:0; transform: translateX(16%); }
+  100% { opacity:1; transform: translateX(0); }
 }
 @keyframes pageEnterDown {
-  0%   { opacity:0; transform: translateY(18%) scale(1.03); filter: blur(10px); }
-  50%  { opacity:0.8; filter: blur(2px); }
-  100% { opacity:1; transform: translateY(0) scale(1); filter: blur(0px); }
+  0%   { opacity:0; transform: translateY(14%); }
+  100% { opacity:1; transform: translateY(0); }
 }
 
-/* ===== TRANSITION VEIL (light sweep) ===== */
-#transitionVeil {
-  position: fixed; inset: 0;
-  pointer-events: none; z-index: 900;
-  background: radial-gradient(ellipse at center, rgba(232,180,192,0.18) 0%, transparent 70%);
-  opacity: 0;
-}
-#transitionVeil.flash {
-  animation: veilFlash 0.72s ease forwards;
-}
-@keyframes veilFlash {
-  0%   { opacity: 0; }
-  30%  { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-/* ===== PAGE 1 ===== */
+/* page 1 */
 #page1 {
   background: linear-gradient(160deg, var(--black-cat) 0%, #3d2660 50%, var(--violet-dark) 100%);
   display: flex; align-items: center; justify-content: center;
@@ -273,7 +250,7 @@ html, body {
 }
 .countdown-sep { color: var(--dusty-pink); font-size: 1.5rem; margin-bottom: 16px; }
 
-/* ===== PAGE 2 ===== */
+/* page 2 */
 #page2 {
   background: linear-gradient(160deg, #1a1025 0%, #2a1840 100%);
   display: flex; align-items: center; justify-content: center; min-height: 100vh;
@@ -295,17 +272,22 @@ html, body {
   font-size: 1.8rem; color: var(--dusty-pink); font-style: italic;
 }
 
-/* ===== PAGE 3 ===== */
+/* page 2 particles canvas */
+#page2Canvas {
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 0;
+}
+
+/* page 3 */
 #page3 {
   background: linear-gradient(160deg, var(--black-cat) 0%, #2d1a45 50%, #3d2660 100%);
   min-height: 100vh;
 }
 .page3-content {
   max-width: 620px; margin: 0 auto;
-  padding: 48px 24px 80px; position: relative; z-index: 2;
+  padding: 48px 24px 80px; position: relative; z-index: 10;
 }
 
-/* ===== CAT AVATAR (letter header) ===== */
 .letter-header {
   text-align: center; margin-bottom: 28px;
 }
@@ -316,7 +298,6 @@ html, body {
   margin-bottom: 16px;
 }
 
-/* SVG telinga kucing di belakang foto */
 .cat-ears {
   position: absolute;
   top: -22px;
@@ -365,13 +346,14 @@ html, body {
 }
 
 .letter-box {
-  background: rgba(255,255,255,0.07);
+  background: #1e1030;
   border-radius: 20px; padding: 32px;
   box-shadow: 0 4px 40px rgba(0,0,0,0.3);
   border: 1px solid rgba(232,180,192,0.2);
   margin-bottom: 28px; min-height: 200px;
   border-left: 4px solid var(--dusty-pink);
-  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 10;
 }
 .letter-text {
   font-size: 1rem; line-height: 1.9;
@@ -388,7 +370,7 @@ html, body {
   51%, 100% { opacity: 0; }
 }
 
-/* ===== PAGE 4 ===== */
+/* page 4 */
 #page4 {
   background: linear-gradient(160deg, var(--black-cat) 0%, #2d1f3d 100%);
   min-height: 100vh;
@@ -403,7 +385,7 @@ html, body {
   text-align: center; margin-bottom: 32px;
 }
 
-/* CAROUSEL */
+/* carousel */
 .carousel-wrap {
   position: relative; margin-bottom: 40px; touch-action: pan-y;
 }
@@ -413,7 +395,6 @@ html, body {
 .carousel-track {
   display: flex;
   transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform;
 }
 .carousel-slide {
   flex: 0 0 100%; position: relative;
@@ -473,7 +454,6 @@ html, body {
 .carousel-btn.prev { left: -16px; }
 .carousel-btn.next { right: -16px; }
 
-/* AUTO-SLIDE PROGRESS BAR */
 .carousel-progress {
   height: 3px;
   background: rgba(255,255,255,0.1);
@@ -489,7 +469,6 @@ html, body {
   transition: width linear;
 }
 
-/* SWIPE HINT */
 .swipe-hint {
   position: absolute;
   bottom: 16px; left: 50%;
@@ -502,7 +481,6 @@ html, body {
   padding: 7px 16px;
   color: rgba(255,255,255,0.85);
   font-size: 0.78rem;
-  letter-spacing: 0.5px;
   pointer-events: none;
   animation: hintFadeOut 0.5s ease 6s forwards;
   z-index: 5;
@@ -519,30 +497,18 @@ html, body {
   to { opacity: 0; }
 }
 
-/* floating hearts */
+/* floating hearts — dipake di carousel aja */
 .floating-heart {
   position: fixed; pointer-events: none; font-size: 1.4rem;
   animation: heartFloat 2.2s ease-out forwards; z-index: 999;
 }
 @keyframes heartFloat {
-  0%   { transform: translateY(0) scale(0.5) rotate(-10deg); opacity: 1; }
-  60%  { opacity: 1; transform: translateY(-120px) scale(1.1) rotate(8deg); }
-  100% { transform: translateY(-200px) scale(0.7) rotate(-5deg); opacity: 0; }
+  0%   { transform: translateY(0) scale(0.5); opacity: 1; }
+  60%  { opacity: 1; transform: translateY(-120px) scale(1.1); }
+  100% { transform: translateY(-200px) scale(0.7); opacity: 0; }
 }
 
-/* sparkles */
-.slide-sparkles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-.sparkle {
-  position: absolute; width: 6px; height: 6px;
-  border-radius: 50%; background: white;
-  animation: sparklePop 0.6s ease-out forwards;
-}
-@keyframes sparklePop {
-  0%   { transform: scale(0); opacity: 1; }
-  100% { transform: scale(3); opacity: 0; }
-}
-
-/* CONFETTI */
+/* confetti */
 .confetti-piece {
   position: fixed; pointer-events: none; z-index: 998;
   border-radius: 2px; animation: confettiFall linear forwards;
@@ -553,40 +519,21 @@ html, body {
   100%{ transform: translateY(105vh) rotate(720deg); opacity: 0; }
 }
 
+/* ending */
 .final-message {
   text-align: center;
   padding: 48px 0 32px;
-  position: relative;
-}
-
-/* Glow orb behind the ending */
-.final-message::before {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 320px; height: 320px;
-  background: radial-gradient(ellipse, rgba(232,180,192,0.18) 0%, rgba(139,107,177,0.1) 40%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: orbPulse 4s ease-in-out infinite;
-}
-@keyframes orbPulse {
-  0%,100% { transform: translate(-50%,-50%) scale(1);   opacity: 0.6; }
-  50%      { transform: translate(-50%,-50%) scale(1.3); opacity: 1;   }
 }
 
 .final-birthday-line {
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem; color: white;
   margin-bottom: 10px; line-height: 1.2;
-  opacity: 0; transform: translateY(30px) scale(0.92);
-  transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1);
-  position: relative; z-index: 1;
-  text-shadow: 0 0 40px rgba(232,180,192,0.5);
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 .final-birthday-line.revealed {
-  opacity: 1; transform: translateY(0) scale(1);
+  opacity: 1; transform: translateY(0);
 }
 .final-birthday-line span {
   display: inline-block;
@@ -594,16 +541,14 @@ html, body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 18px rgba(232,180,192,0.6));
 }
 
 .final-sub {
   font-size: 1.05rem; color: rgba(255,255,255,0.65);
   font-family: 'DM Sans', sans-serif; font-weight: 300;
-  margin-bottom: 20px; letter-spacing: 0.3px;
+  margin-bottom: 20px;
   opacity: 0; transform: translateY(20px);
   transition: opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s;
-  position: relative; z-index: 1;
 }
 .final-sub.revealed { opacity: 1; transform: translateY(0); }
 
@@ -612,12 +557,11 @@ html, body {
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(232,180,192,0.25);
   border-radius: 50px; padding: 10px 22px;
-  opacity: 0; transform: translateY(16px) scale(0.95);
+  opacity: 0; transform: translateY(16px);
   transition: opacity 0.6s ease 0.6s, transform 0.6s ease 0.6s;
   backdrop-filter: blur(8px);
-  position: relative; z-index: 1;
 }
-.final-from-wrap.revealed { opacity: 1; transform: translateY(0) scale(1); }
+.final-from-wrap.revealed { opacity: 1; transform: translateY(0); }
 
 .final-from-heart {
   font-size: 1.1rem;
@@ -636,19 +580,7 @@ html, body {
   font-size: 1.05rem; color: var(--dusty-pink);
 }
 
-/* Floating petal/star burst on ending reveal */
-.end-burst {
-  position: fixed; pointer-events: none; z-index: 998;
-  font-size: 1.3rem;
-  animation: endBurst 2.4s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
-}
-@keyframes endBurst {
-  0%   { opacity: 1; transform: translate(0,0) scale(0.4) rotate(0deg); }
-  60%  { opacity: 0.9; }
-  100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(1.1) rotate(var(--rot)); }
-}
-
-/* ===== CINEMATIC INTRO ===== */
+/* intro */
 #introScreen {
   position: fixed; inset: 0; z-index: 2000;
   background: #0d0a14;
@@ -691,14 +623,14 @@ html, body {
   to   { opacity: 1; transform: translateY(0); }
 }
 #introScreen.fade-out {
-  animation: introExit 0.9s cubic-bezier(0.77,0,0.18,1) forwards;
+  animation: introExit 0.9s ease forwards;
 }
 @keyframes introExit {
-  0%   { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1.06); pointer-events: none; }
+  0%   { opacity: 1; }
+  100% { opacity: 0; pointer-events: none; }
 }
 
-/* ===== SKIP TYPING BUTTON ===== */
+/* skip + next + back + music btn */
 .skip-typing-btn {
   position: fixed; bottom: 24px; right: 20px; z-index: 10;
   background: rgba(255,255,255,0.08);
@@ -707,10 +639,11 @@ html, body {
   padding: 8px 16px; border-radius: 50px;
   font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
   cursor: pointer; backdrop-filter: blur(8px);
-  transition: all 0.3s; letter-spacing: 0.5px;
+  transition: all 0.3s;
 }
 .skip-typing-btn:hover { background: rgba(232,180,192,0.15); color: white; }
 .skip-typing-btn.hidden { display: none; }
+
 .next-btn {
   background: linear-gradient(135deg, var(--dusty-pink), var(--violet));
   color: white; border: none;
@@ -719,14 +652,26 @@ html, body {
   cursor: pointer; transition: all 0.3s;
   box-shadow: 0 4px 20px rgba(139,107,177,0.4); margin-top: 8px;
 }
-.next-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(139,107,177,0.5);
-}
+.next-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(139,107,177,0.5); }
 .next-btn.hidden { display: none; }
 
+#page2 .next-btn {
+  background: transparent;
+  border: 1.5px solid rgba(232,180,192,0.5);
+  color: var(--dusty-pink);
+  box-shadow: none;
+  font-style: italic;
+}
+#page2 .next-btn:hover {
+  background: rgba(232,180,192,0.1);
+}
+#page3 .next-btn {
+  background: linear-gradient(135deg, #3d2660, var(--violet));
+  border: 1px solid rgba(232,180,192,0.3);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
 
-/* ===== BACK BUTTON ===== */
 .back-btn {
   position: fixed; top: 16px; left: 16px; z-index: 100;
   width: 38px; height: 38px; border-radius: 50%;
@@ -740,7 +685,6 @@ html, body {
 .back-btn.visible { display: flex; }
 .back-btn:hover { background: rgba(232,180,192,0.2); transform: scale(1.1); }
 
-/* ===== MUSIC CONTROL BUTTON ===== */
 #musicControl {
   position: fixed; top: 16px; right: 16px; z-index: 100;
   width: 38px; height: 38px; border-radius: 50%;
@@ -753,38 +697,6 @@ html, body {
 }
 #musicControl.visible { display: flex; }
 #musicControl:hover { background: rgba(232,180,192,0.2); transform: scale(1.1); }
-
-/* ===== PAGE 2 PARTICLES ===== */
-#page2Canvas {
-  position: absolute; inset: 0;
-  pointer-events: none; z-index: 0;
-}
-
-/* ===== PER-PAGE BUTTON STYLES ===== */
-/* Page 1 — confident, bold */
-#page1 .next-btn {
-  background: linear-gradient(135deg, var(--dusty-pink), var(--violet));
-  letter-spacing: 1px;
-}
-/* Page 2 — soft, warm */
-#page2 .next-btn {
-  background: transparent;
-  border: 1.5px solid rgba(232,180,192,0.5);
-  color: var(--dusty-pink);
-  box-shadow: none;
-  font-style: italic;
-}
-#page2 .next-btn:hover {
-  background: rgba(232,180,192,0.1);
-  box-shadow: 0 0 20px rgba(232,180,192,0.2);
-}
-/* Page 3 — intimate, letter-style */
-#page3 .next-btn {
-  background: linear-gradient(135deg, #3d2660, var(--violet));
-  border: 1px solid rgba(232,180,192,0.3);
-  font-family: 'Playfair Display', serif;
-  font-style: italic; letter-spacing: 0.5px;
-}
 
 @media (max-width: 500px) {
   .greeting-title { font-size: 2rem; }
@@ -800,44 +712,33 @@ html, body {
 </head>
 <body>
 
-<!-- MUSIC -->
 <audio id="bgMusic" loop>
   <source src="./music/song.mp3" type="audio/mpeg">
 </audio>
 
-<!-- MUSIC CONTROL -->
+<canvas id="starCanvas"></canvas>
 <button id="musicControl" onclick="toggleMusic()" title="musik">🎵</button>
-
-<!-- BACK BUTTON -->
 <button id="backBtn" class="back-btn" onclick="goBack()" title="kembali">←</button>
 
-<!-- STAR CANVAS — di atas semua page -->
-<canvas id="starCanvas"></canvas>
-
-<!-- CINEMATIC INTRO -->
 <div id="introScreen">
   <p class="intro-for">special for</p>
   <h1 class="intro-name">Marcel</h1>
   <p class="intro-year">Juni 2026</p>
 </div>
 
-<!-- POPUP MUSIK -->
 <div class="music-popup" id="musicPopup" style="display:none;">
   <div class="popup-box">
     <div class="popup-cats">🐈‍⬛❤️🐱</div>
-    <h2>haii Marcel ganteng!</h2>
+    <h2>Haii Marcel!</h2>
     <p>Mau pake musik ga, Cel?</p>
     <div class="popup-btns">
-      <button onclick="startSite(true)" class="btn-yes">mauu bangett</button>
+      <button onclick="startSite(true)" class="btn-yes">mauu bangett 🎵</button>
       <button onclick="startSite(false)" class="btn-no">gah males</button>
     </div>
   </div>
 </div>
 
-<!-- TRANSITION VEIL -->
-<div id="transitionVeil"></div>
-
-<!-- PAGE 1 -->
+<!-- page 1 -->
 <section class="page" id="page1">
   <div class="paw-bg" id="pawBg"></div>
   <div class="page1-content">
@@ -846,7 +747,7 @@ html, body {
       <span class="cat-anim" style="animation-delay:0.3s">🎂</span>
       <span class="cat-anim" style="animation-delay:0.6s">🧡</span>
     </div>
-    <h1 class="greeting-title">Happy Birthday,<br><span class="name-highlight" id="nameHighlight">Marcel</span></h1>
+    <h1 class="greeting-title">Happy Birthday,<br><span class="name-highlight" id="nameHighlight">gemesss</span></h1>
     <p class="greeting-sub" id="greetingSub">Pramudhita Ananda Marcelino ❤️</p>
     <div class="date-anim-wrap">
       <div class="date-display">
@@ -876,7 +777,7 @@ html, body {
   </div>
 </section>
 
-<!-- PAGE 2 -->
+<!-- page 2 -->
 <section class="page hidden" id="page2">
   <canvas id="page2Canvas"></canvas>
   <div class="page2-content">
@@ -894,33 +795,25 @@ html, body {
   </div>
 </section>
 
-<!-- PAGE 3 -->
+<!-- page 3 -->
 <section class="page hidden" id="page3">
   <div class="page3-content">
     <div class="letter-header">
-
-      <!-- Cat avatar dengan telinga kucing SVG -->
       <div class="cat-avatar-wrap">
-        <!-- Telinga kucing SVG -->
         <svg class="cat-ears" viewBox="0 0 130 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Telinga kiri -->
           <polygon points="10,48 30,2 55,48" fill="#6a4f8c"/>
           <polygon points="18,44 30,12 47,44" fill="#e8b4c0"/>
-          <!-- Telinga kanan -->
           <polygon points="75,48 100,2 120,48" fill="#6a4f8c"/>
           <polygon points="83,44 100,12 112,44" fill="#e8b4c0"/>
         </svg>
-        <!-- Foto Marcel -->
         <img
           class="cat-avatar-img"
           src="./img/photo1.jpg"
           alt="Marcel"
           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
         />
-        <!-- Fallback kalau foto ga load -->
         <div class="cat-avatar-placeholder" style="display:none;">😽</div>
       </div>
-
       <h2 class="letter-title">dear Marcel,</h2>
     </div>
     <div class="letter-box">
@@ -932,7 +825,7 @@ html, body {
   </div>
 </section>
 
-<!-- PAGE 4 -->
+<!-- page 4 -->
 <section class="page hidden" id="page4">
   <div class="page4-content">
     <h2 class="gallery-title">Marcel gemesss😽❤️</h2>
@@ -943,27 +836,22 @@ html, body {
           <div class="carousel-slide" data-index="0">
             <img src="./img/photo1.jpg" alt="foto 1" onerror="this.parentElement.classList.add('no-photo')" />
             <div class="photo-placeholder-text">📷 photo1.jpg</div>
-            <div class="slide-sparkles" id="sparkles0"></div>
           </div>
           <div class="carousel-slide" data-index="1">
             <img src="./img/photo2.jpg" alt="foto 2" onerror="this.parentElement.classList.add('no-photo')" />
             <div class="photo-placeholder-text">📷 photo2.jpg</div>
-            <div class="slide-sparkles" id="sparkles1"></div>
           </div>
           <div class="carousel-slide" data-index="2">
             <img src="./img/photo3.jpg" alt="foto 3" onerror="this.parentElement.classList.add('no-photo')" />
             <div class="photo-placeholder-text">📷 photo3.jpg</div>
-            <div class="slide-sparkles" id="sparkles2"></div>
           </div>
           <div class="carousel-slide" data-index="3">
             <img src="./img/photo4.jpg" alt="foto 4" onerror="this.parentElement.classList.add('no-photo')" />
             <div class="photo-placeholder-text">📷 photo4.jpg</div>
-            <div class="slide-sparkles" id="sparkles3"></div>
           </div>
           <div class="carousel-slide" data-index="4">
             <img src="./img/photo5.jpg" alt="foto 5" onerror="this.parentElement.classList.add('no-photo')" />
             <div class="photo-placeholder-text">📷 photo5.jpg</div>
-            <div class="slide-sparkles" id="sparkles4"></div>
           </div>
         </div>
       </div>
@@ -989,7 +877,6 @@ html, body {
 </section>
 
 <script>
-// ===== CONFIG =====
 const BIRTHDAY_DATE = new Date('2026-06-09T00:00:00');
 
 const LETTER = `Happy Birthday to the most handsome boy who lights up my world! 🌹✨
@@ -1011,79 +898,56 @@ Makasih ya udah jadi Marcel yang kukenal dan nemenin aku. Maaf aku sering malesi
 Happy 20th Birthday, Cel. Go get your dream! God bless you ❤️`;
 
 
-// ===== STAR PARTICLES (z-index 50, mix-blend-mode screen = keliatan di semua background) =====
+// bintang
 (function initStars() {
   const canvas = document.getElementById('starCanvas');
   const ctx = canvas.getContext('2d');
   let stars = [];
-  let animId;
-
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-
+  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
   function createStars() {
     stars = [];
     for (let i = 0; i < 160; i++) {
       stars.push({
-        x:          Math.random() * canvas.width,
-        y:          Math.random() * canvas.height,
-        r:          Math.random() * 1.8 + 0.4,
-        pulse:      Math.random() * Math.PI * 2,
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.8 + 0.4,
+        pulse: Math.random() * Math.PI * 2,
         pulseSpeed: 0.012 + Math.random() * 0.025,
-        vx:         (Math.random() - 0.5) * 0.18,
-        vy:         (Math.random() - 0.5) * 0.18,
+        vx: (Math.random() - 0.5) * 0.18,
+        vy: (Math.random() - 0.5) * 0.18,
       });
     }
   }
-
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     stars.forEach(s => {
       s.pulse += s.pulseSpeed;
-      // opacity antara 0.3–0.85 biar keliatan jelas
       const a = 0.3 + 0.55 * Math.abs(Math.sin(s.pulse));
-
-      // Gambar bintang bercahaya (glow kecil + titik tengah)
       const grd = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 3);
-      grd.addColorStop(0,   `rgba(255, 220, 230, ${a})`);
+      grd.addColorStop(0, `rgba(255, 220, 230, ${a})`);
       grd.addColorStop(0.4, `rgba(232, 180, 192, ${a * 0.6})`);
-      grd.addColorStop(1,   `rgba(196, 168, 224, 0)`);
-
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r * 3, 0, Math.PI * 2);
-      ctx.fillStyle = grd;
-      ctx.fill();
-
-      // Titik inti lebih terang
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255, 240, 245, ${a})`;
-      ctx.fill();
-
-      s.x += s.vx;
-      s.y += s.vy;
-      if (s.x < -5)               s.x = canvas.width + 5;
+      grd.addColorStop(1, `rgba(196, 168, 224, 0)`);
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r * 3, 0, Math.PI * 2);
+      ctx.fillStyle = grd; ctx.fill();
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 240, 245, ${a})`; ctx.fill();
+      s.x += s.vx; s.y += s.vy;
+      if (s.x < -5) s.x = canvas.width + 5;
       if (s.x > canvas.width + 5) s.x = -5;
-      if (s.y < -5)               s.y = canvas.height + 5;
-      if (s.y > canvas.height + 5)s.y = -5;
+      if (s.y < -5) s.y = canvas.height + 5;
+      if (s.y > canvas.height + 5) s.y = -5;
     });
-    animId = requestAnimationFrame(draw);
+    requestAnimationFrame(draw);
   }
-
   window.addEventListener('resize', () => { resize(); createStars(); });
-  resize();
-  createStars();
-  draw();
+  resize(); createStars(); draw();
 })();
 
-
-// ===== MUSIC CONTROL =====
+// musik
 let musicPlaying = false;
 function toggleMusic() {
   const music = document.getElementById('bgMusic');
-  const btn   = document.getElementById('musicControl');
+  const btn = document.getElementById('musicControl');
   if (musicPlaying) {
     music.pause();
     btn.textContent = '🔇';
@@ -1095,33 +959,31 @@ function toggleMusic() {
   }
 }
 
-// ===== PAGE 2 PARTICLES =====
+// particles page 2
 let p2AnimId;
 function initPage2Particles() {
   const canvas = document.getElementById('page2Canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  canvas.width  = window.innerWidth;
+  canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-
   const particles = Array.from({length: 55}, () => ({
-    x:     Math.random() * canvas.width,
-    y:     Math.random() * canvas.height,
-    r:     0.6 + Math.random() * 1.4,
-    vx:    (Math.random() - 0.5) * 0.3,
-    vy:    -0.2 - Math.random() * 0.4,
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: 0.6 + Math.random() * 1.4,
+    vx: (Math.random() - 0.5) * 0.3,
+    vy: -0.2 - Math.random() * 0.4,
     alpha: 0.1 + Math.random() * 0.5,
     pulse: Math.random() * Math.PI * 2,
   }));
-
   cancelAnimationFrame(p2AnimId);
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     particles.forEach(p => {
       p.pulse += 0.02;
       p.x += p.vx; p.y += p.vy;
-      if (p.y < -5)               p.y = canvas.height + 5;
-      if (p.x < -5)               p.x = canvas.width + 5;
+      if (p.y < -5) p.y = canvas.height + 5;
+      if (p.x < -5) p.x = canvas.width + 5;
       if (p.x > canvas.width + 5) p.x = -5;
       const a = p.alpha * (0.5 + 0.5 * Math.abs(Math.sin(p.pulse)));
       ctx.beginPath();
@@ -1134,11 +996,10 @@ function initPage2Particles() {
   draw();
 }
 
-
+// intro
 (function runIntro() {
-  const intro  = document.getElementById('introScreen');
-  const popup  = document.getElementById('musicPopup');
-  // After animations finish (~2.4s), fade out intro then show popup
+  const intro = document.getElementById('introScreen');
+  const popup = document.getElementById('musicPopup');
   setTimeout(() => {
     intro.classList.add('fade-out');
     setTimeout(() => {
@@ -1152,7 +1013,6 @@ function initPage2Particles() {
   }, 2400);
 })();
 
-// ===== MUSIC POPUP =====
 function startSite(playMusic) {
   const popup = document.getElementById('musicPopup');
   popup.style.opacity = '0';
@@ -1172,13 +1032,9 @@ function startSite(playMusic) {
   initPage1();
 }
 
-
-
-// ===== BACK BUTTON =====
 function goBack() {
   if (currentPage > 1) goToPage(currentPage - 1);
 }
-
 function updateBackBtn() {
   const btn = document.getElementById('backBtn');
   if (!btn) return;
@@ -1186,7 +1042,6 @@ function updateBackBtn() {
   else btn.classList.remove('visible');
 }
 
-// ===== FLOATING PAWS =====
 function initPaws() {
   const pawBg = document.getElementById('pawBg');
   if (!pawBg) return;
@@ -1202,8 +1057,6 @@ function initPaws() {
   }
 }
 
-
-// ===== NAME LETTER ANIMATION =====
 function animateName() {
   const nameEl = document.getElementById('nameHighlight');
   const text = nameEl.textContent;
@@ -1220,8 +1073,6 @@ function animateName() {
   }, 300 + text.length * 80 + 200);
 }
 
-
-// ===== DATE ANIMATION =====
 function animateDate() {
   const months = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
   const targetYear = 2026, targetMonth = 5, targetDay = 9, birthYear = 2006;
@@ -1229,26 +1080,21 @@ function animateDate() {
   const dayEl = document.getElementById('animDay');
   const monthEl = document.getElementById('animMonth');
   const yearEl = document.getElementById('animYear');
-
   const interval = setInterval(() => {
-    if (currentDay < targetDay)         { currentDay++; }
-    else if (currentMonth < targetMonth){ currentDay = targetDay; currentMonth++; }
-    else if (currentYear < targetYear)  { currentMonth = targetMonth; currentYear++; }
+    if (currentDay < targetDay)          { currentDay++; }
+    else if (currentMonth < targetMonth) { currentDay = targetDay; currentMonth++; }
+    else if (currentYear < targetYear)   { currentMonth = targetMonth; currentYear++; }
     else { clearInterval(interval); return; }
-    dayEl.textContent   = currentDay;
+    dayEl.textContent = currentDay;
     monthEl.textContent = months[currentMonth];
-    yearEl.textContent  = currentYear;
+    yearEl.textContent = currentYear;
   }, 100);
 }
 
-
-// ===== COUNTDOWN =====
 function updateCountdown() {
-  const now  = new Date();
+  const now = new Date();
   const diff = BIRTHDAY_DATE - now;
-
   if (diff > 0) {
-    // Before birthday — show countdown
     document.getElementById('countdownBoxes').style.display = 'flex';
     document.getElementById('birthdayMsg').style.display = 'none';
     document.getElementById('countdownLabel').textContent = 'menuju hari spesialmu';
@@ -1257,11 +1103,9 @@ function updateCountdown() {
     document.getElementById('cdMins').textContent  = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
     document.getElementById('cdSecs').textContent  = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
   } else {
-    // On or after birthday
     document.getElementById('countdownBoxes').style.display = 'none';
     document.getElementById('birthdayMsg').style.display = 'block';
     document.getElementById('countdownLabel').textContent = '';
-
     const daysPast = Math.floor(Math.abs(diff) / 86400000);
     const msgEl = document.getElementById('birthdayMsgText');
     if (daysPast === 0) {
@@ -1274,8 +1118,6 @@ function updateCountdown() {
   }
 }
 
-
-// ===== PAGE 1 INIT =====
 function initPage1() {
   initPaws();
   animateName();
@@ -1284,41 +1126,25 @@ function initPage1() {
   setInterval(updateCountdown, 1000);
 }
 
-
-// ===== CINEMATIC PAGE NAVIGATION =====
+// navigasi antar page
 let currentPage = 1;
 let isTransitioning = false;
 
 function goToPage(num) {
   if (isTransitioning) return;
   isTransitioning = true;
-
   const fromEl = document.getElementById('page' + currentPage);
-  const toEl   = document.getElementById('page' + num);
-  const veil   = document.getElementById('transitionVeil');
-
-  // Choose animation direction based on page order
-  const exitAnim  = (num > currentPage) ? 'exit-left' : 'exit-up';
+  const toEl = document.getElementById('page' + num);
+  const exitAnim = (num > currentPage) ? 'exit-left' : 'exit-up';
   const enterAnim = (num > currentPage) ? 'enter-right' : 'enter-down';
-
-  // Flash veil (light sweep)
-  veil.classList.remove('flash');
-  void veil.offsetWidth;
-  veil.classList.add('flash');
-
-  // Exit current page
   fromEl.classList.add(exitAnim);
-
-  // Prepare incoming page
   toEl.classList.remove('hidden');
   toEl.style.opacity = '0';
   toEl.scrollTop = 0;
-
   setTimeout(() => {
     toEl.style.opacity = '';
     toEl.classList.add(enterAnim);
   }, 120);
-
   setTimeout(() => {
     fromEl.classList.add('hidden');
     fromEl.classList.remove(exitAnim);
@@ -1326,14 +1152,12 @@ function goToPage(num) {
     currentPage = num;
     isTransitioning = false;
     if (num === 2) initPage2();
-    if (num === 3) initPage3();
+    if (num === 3) { document.getElementById('starCanvas').style.display = ''; initPage3(); }
     if (num === 4) initPage4();
     updateBackBtn();
-  }, 750);
+  }, 700);
 }
 
-
-// ===== PAGE 2 =====
 function initPage2() {
   initPage2Particles();
   const lines = document.querySelectorAll('.word-line');
@@ -1346,12 +1170,10 @@ function initPage2() {
   }, parseInt(lines[lines.length-1].dataset.delay) + 1200);
 }
 
-
-// ===== PAGE 3: SURAT =====
 let typingInterval;
 function initPage3() {
-  const textEl  = document.getElementById('letterText');
-  const cursor  = document.getElementById('letterCursor');
+  const textEl = document.getElementById('letterText');
+  const cursor = document.getElementById('letterCursor');
   const skipBtn = document.getElementById('skipTypingBtn');
   textEl.textContent = '';
   cursor.style.display = 'inline-block';
@@ -1373,8 +1195,8 @@ function initPage3() {
 
 function skipTyping() {
   clearInterval(typingInterval);
-  const textEl  = document.getElementById('letterText');
-  const cursor  = document.getElementById('letterCursor');
+  const textEl = document.getElementById('letterText');
+  const cursor = document.getElementById('letterCursor');
   const skipBtn = document.getElementById('skipTypingBtn');
   textEl.textContent = LETTER;
   cursor.style.display = 'none';
@@ -1385,25 +1207,20 @@ function skipTyping() {
   }, 100);
 }
 
-
-// ===== PAGE 4: CAROUSEL =====
+// carousel
 let carouselIndex = 0;
 const CAROUSEL_TOTAL = 5;
-let touchStartX = 0, touchStartY = 0, isDragging = false;
+let touchStartX = 0, isDragging = false;
 
 function initPage4() {
+  document.getElementById('starCanvas').style.display = 'none';
   carouselIndex = 0;
-
-  // Reset carousel opacity in case of re-entry
   const wrapReset = document.getElementById('carouselWrap');
   if (wrapReset) { wrapReset.style.transition = 'none'; wrapReset.style.opacity = '1'; }
-
-  // Reset ending reveal state
   ['finalLine1','finalLine2','finalSub','finalFrom'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.classList.remove('revealed');
   });
-
   const dotsEl = document.getElementById('carouselDots');
   dotsEl.innerHTML = '';
   for (let i = 0; i < CAROUSEL_TOTAL; i++) {
@@ -1412,28 +1229,24 @@ function initPage4() {
     dot.onclick = () => carouselGoTo(i);
     dotsEl.appendChild(dot);
   }
-
   const wrap = document.getElementById('carouselWrap');
   wrap.addEventListener('touchstart', e => {
     touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
     isDragging = true;
   }, { passive: true });
   wrap.addEventListener('touchend', e => {
     if (!isDragging) return;
     const dx = e.changedTouches[0].clientX - touchStartX;
-    const dy = e.changedTouches[0].clientY - touchStartY;
-    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+    if (Math.abs(dx) > 40) {
       stopAutoSlide();
       dx < 0 ? carouselNext() : carouselPrev();
       startAutoSlide();
     }
     isDragging = false;
   }, { passive: true });
-
   let mouseStartX = 0;
   wrap.addEventListener('mousedown', e => { mouseStartX = e.clientX; });
-  wrap.addEventListener('mouseup',   e => {
+  wrap.addEventListener('mouseup', e => {
     const dx = e.clientX - mouseStartX;
     if (Math.abs(dx) > 40) {
       stopAutoSlide();
@@ -1441,7 +1254,6 @@ function initPage4() {
       startAutoSlide();
     }
   });
-
   setTimeout(() => launchConfetti(), 300);
   carouselGoTo(0, true);
   startAutoSlide();
@@ -1459,26 +1271,16 @@ function startAutoSlide() {
   void bar.offsetWidth;
   bar.style.transition = `width ${AUTO_SLIDE_DELAY}ms linear`;
   bar.style.width = '100%';
-
   autoSlideTimer = setTimeout(() => {
     if (carouselIndex < CAROUSEL_TOTAL - 1) {
       carouselNext();
       startAutoSlide();
     } else {
-      // Last slide — stop progress bar, then trigger dramatic ending after pause
       bar.style.transition = 'none';
       bar.style.width = '0%';
-      triggerDramaticEnding();
+      setTimeout(() => revealEnding(), 800);
     }
   }, AUTO_SLIDE_DELAY);
-}
-
-function triggerDramaticEnding() {
-  // Keep carousel visible, just scroll down and reveal ending
-  setTimeout(() => {
-    revealEnding();
-    launchConfetti();
-  }, 800);
 }
 
 function stopAutoSlide() {
@@ -1494,7 +1296,7 @@ function carouselGoTo(index, isInit = false) {
   document.getElementById('carouselTrack').style.transform = `translateX(-${index * 100}%)`;
   document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === index));
   document.getElementById('carouselCounter').textContent = `${index + 1} / ${CAROUSEL_TOTAL}`;
-  if (!isInit) { spawnHearts(); spawnSparkles(index); }
+  if (!isInit) spawnHearts();
   carouselIndex = index;
 }
 
@@ -1503,7 +1305,7 @@ function carouselPrev() { carouselGoTo((carouselIndex - 1 + CAROUSEL_TOTAL) % CA
 
 function spawnHearts() {
   const emojis = ['❤️','🧡','💕','💗','🐾','💖','😽'];
-  for (let i = 0; i < 6 + Math.floor(Math.random()*4); i++) {
+  for (let i = 0; i < 5; i++) {
     setTimeout(() => {
       const h = document.createElement('div');
       h.className = 'floating-heart';
@@ -1518,83 +1320,33 @@ function spawnHearts() {
   }
 }
 
-function spawnSparkles(index) {
-  const c = document.getElementById('sparkles' + index);
-  if (!c) return;
-  c.innerHTML = '';
-  for (let i = 0; i < 8; i++) {
-    const s = document.createElement('div');
-    s.className = 'sparkle';
-    s.style.left = (10 + Math.random() * 80) + '%';
-    s.style.top  = (10 + Math.random() * 80) + '%';
-    s.style.animationDelay = (Math.random() * 0.3) + 's';
-    s.style.background = Math.random() > 0.5 ? 'var(--dusty-pink)' : 'white';
-    c.appendChild(s);
-    setTimeout(() => s.remove(), 800);
-  }
-}
-
-// ===== ENDING REVEAL =====
 function revealEnding() {
-  const line1 = document.getElementById('finalLine1');
-  const line2 = document.getElementById('finalLine2');
-  const sub   = document.getElementById('finalSub');
-  const from  = document.getElementById('finalFrom');
-  if (!line1) return;
-
-  // Scroll to bottom so ending is visible
   const p4 = document.getElementById('page4');
   p4.scrollTo({ top: p4.scrollHeight, behavior: 'smooth' });
-
-  // Staggered reveal
-  setTimeout(() => line1.classList.add('revealed'), 200);
-  setTimeout(() => line2.classList.add('revealed'), 450);
-  setTimeout(() => sub.classList.add('revealed'),   750);
+  setTimeout(() => document.getElementById('finalLine1').classList.add('revealed'), 200);
+  setTimeout(() => document.getElementById('finalLine2').classList.add('revealed'), 450);
+  setTimeout(() => document.getElementById('finalSub').classList.add('revealed'), 750);
   setTimeout(() => {
-    from.classList.add('revealed');
-    launchEndBurst();
+    document.getElementById('finalFrom').classList.add('revealed');
+    launchConfetti();
   }, 1050);
-}
-
-function launchEndBurst() {
-  const emojis = ['🌸','✨','💖','🐾','🎂','💕','⭐','🧡','💗','🌟'];
-  const cx = window.innerWidth / 2;
-  const cy = window.innerHeight * 0.82;
-  for (let i = 0; i < 22; i++) {
-    setTimeout(() => {
-      const el = document.createElement('div');
-      el.className = 'end-burst';
-      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      const angle  = (Math.random() * 360) * Math.PI / 180;
-      const dist   = 80 + Math.random() * 220;
-      el.style.left = cx + 'px';
-      el.style.top  = cy + 'px';
-      el.style.setProperty('--tx', (Math.cos(angle) * dist) + 'px');
-      el.style.setProperty('--ty', (Math.sin(angle) * dist - 60) + 'px');
-      el.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
-      el.style.animationDelay = (Math.random() * 0.25) + 's';
-      el.style.fontSize = (1 + Math.random() * 0.9) + 'rem';
-      document.body.appendChild(el);
-      setTimeout(() => el.remove(), 2800);
-    }, i * 40);
-  }
 }
 
 function launchConfetti() {
   const colors = ['#e8b4c0','#c4a8e0','#8b6bb1','#f5dde4','#ffffff','#e8924a','#ffdd57'];
-  for (let i = 0; i < 120; i++) {
+  for (let i = 0; i < 80; i++) {
     setTimeout(() => {
       const p = document.createElement('div');
       p.className = 'confetti-piece';
       const size = 6 + Math.random() * 8;
-      p.style.width  = size + 'px';
+      p.style.width = size + 'px';
       p.style.height = Math.random() > 0.5 ? (size * 0.4) + 'px' : size + 'px';
       p.style.borderRadius = Math.random() > 0.5 ? '1px' : '50%';
       p.style.background = colors[Math.floor(Math.random() * colors.length)];
       p.style.left = (Math.random() * 100) + 'vw';
-      p.style.top  = '-10px';
+      p.style.top = '-10px';
       p.style.animationDuration = (2 + Math.random() * 2.5) + 's';
-      p.style.animationDelay   = (Math.random() * 1.2) + 's';
+      p.style.animationDelay = (Math.random() * 1.2) + 's';
       document.body.appendChild(p);
       setTimeout(() => p.remove(), 5000);
     }, i * 18);
